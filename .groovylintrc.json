@@ -1,0 +1,29 @@
+{
+    "extends": "recommended",
+    "rules": {
+        "BlockEndsWithBlankLine": {
+            "enabled": false
+        },
+        "CompileStatic": {
+            "enabled": false
+        },
+        "ConsecutiveBlankLines": {
+            "enabled": false
+        },
+        "LineLength": {
+            "enabled": false
+        },
+        "NestedBlockDepth": {
+            "enabled": false
+        },
+        "SpaceBeforeOpeningBrace": {
+            "enabled": false
+        },
+        "TrailingWhitespace": {
+            "enabled": false
+        },
+        "UnnecessaryGString": {
+            "enabled": false
+        }
+    }
+}

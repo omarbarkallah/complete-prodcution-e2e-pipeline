@@ -7,11 +7,12 @@ pipeline{
         maven 'Maven3'
     }
     stages{
+
+
         stage("Cleanup Workspace"){
             steps {
                 cleanWs()
             }
-
         }
         
     
@@ -19,7 +20,6 @@ pipeline{
             steps {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/omarbarkallah/complete-prodcution-e2e-pipeline.git'
             }
-
         }
 
 
@@ -27,14 +27,12 @@ pipeline{
             steps {
                 sh "mvn clean package"
             }
-
         }
 
         stage("Test Application"){
             steps {
                 sh "mvn test"
             }
-
         }
 
         stage("Sonarqube Analysis") {
@@ -45,9 +43,19 @@ pipeline{
                     }
                 }
             }
-
         }
 
+        stage("Quality Gate") {
+            steps {
+                script {
+                    {
+                        waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+                    }
+                }
+            }
+        }
+
+        
 
 
     }
